@@ -1,0 +1,123 @@
+﻿@model Product;
+
+@{
+    ViewData["Title"] = "إضافة كمية";
+}
+
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <h3 class="page-header">إضافة كمية لمنتج</h3>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form>
+                            <div asp-validation-summary="ModelOnly" class="text-dander"></div>
+                            <div class="row">
+                                <input asp-for="Product_ID" id="Productid" hidden="hidden" />
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="control-label" style="font-size:large;">رقم الباركود</label>
+                                        <input asp-for="Product_Barcode" id="probarcode" required onkeydown="GetProDataV(event)" class="form-control" />
+                                        <span asp-validation-for="Product_Barcode" class="text-dander"></span>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="control-label" style="font-size:large;">إسم المنتج</label>
+                                        <select class="form-control" required id="proname" onchange="GetProName()" asp-items="ViewBag.Product_Name" asp-for="Product_Name">
+                                            <option value=""></option>
+                                        </select>
+                                        <span asp-validation-for="Product_Name" class="text-dander"></span>
+
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="control-label" style="font-size:large;"> الكمية</label>
+                                        <input asp-for="Product_Quantity" id="qua" type="number" required class="form-control text-center" />
+                                        <span asp-validation-for="Product_Quantity" class="text-dander"></span>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                            <div class="form-group">
+                                <input onclick="AddQun()" class="btn btn-primary" value="إضافة" style="font-size:medium;" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+<script>
+    function GetProName(){
+        var proName = document.getElementById("proname");
+        var proidusig = proName.options(proName.selectedIndex).value;
+        $.get('GetProNameont', { "proid": proidusig ), function (response) (
+           if (response.probarcode != null) {
+            document.getElenentById("probarcode").value = response.probarcode;
+            document.getElementById("Productid").value = response.proid;
+            document.getElementById("qua").focus = true;
+           }
+        })
+    }
+
+
+    function GetProDataV(e) {
+        if (e.keyCode == 13) {
+            var probarusing = document.getElementById("probarcode").value;
+            $.get('GetProductBarAndPricev', { "probarcode": probarusing } , function (response) {
+                if (response.proid != null) {
+                    document.getElementById("proname").value = response.proid;
+                }
+            })
+            }
+            else {
+                return;
+            }
+        }
+
+    function AddQun() {
+        var probarcodeusig = document.getElementById("probarcode").value;
+        var quant = document.getElementByIa("qua").value;
+        var proname = document.getElementById("proname");
+        var produtnam = proname.options[proname.selectedIndex].text;
+        if (probarcodeusig == "" || probarcodeusig == null) {
+            swal('You must select product in the first');
+        }
+        else {
+            if (quant == "" || quant == null || parseInt(quant) <= e) {
+                swal('You must insert Qun Greater than Zero');
+            }
+            else {
+               $.get('ADDADQU', { "barcode": probarcodeusig, "quan": quant, "proname": produtnam }, function (response) {
+                   if (response.x == true) {
+                       swal(' Succes proccess' , "Succes proccess" , "Succes proccess");
+                   }
+               })
+            }
+        }
+    }
+
+
+</script>
+}

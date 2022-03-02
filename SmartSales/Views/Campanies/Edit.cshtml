@@ -1,0 +1,127 @@
+﻿@model Campany
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <h3 class="page-header">تعديل الشركة</h3>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form asp-action="Edit">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <input type="hidden" asp-for="Campany_Id" />
+
+                            <div class="row">
+
+                                <div class="form-group col-sm-6">
+                                    <div class="form-group">
+                                        <label asp-for="Campany_Name" class="control-label">إسم الشركة</label>
+                                        <input asp-for="Campany_Name" class="form-control" />
+                                        <span asp-validation-for="Campany_Name" class="text-danger"></span>
+
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <div class="form-group">
+                                        <label asp-for="Campany_Owner" class="control-label"> إسم المسئول</label>
+                                        <input asp-for="Campany_Owner" class="form-control" />
+                                        <span asp-validation-for="Campany_Owner" class="text-danger"></span>
+
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group col-sm-6">
+                                    <div class="form-group">
+                                        <label asp-for="Campany_Address" class="control-label">عنوان الشركة</label>
+                                        <input asp-for="Campany_Address" class="form-control" />
+                                        <span asp-validation-for="Campany_Address" class="text-danger"></span>
+
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <div class="form-group">
+                                        <label asp-for="Campany_Phone" class="control-label">رقم الهاتف</label>
+                                        <input asp-for="Campany_Phone" class="form-control" />
+                                        <span asp-validation-for="Campany_Phone" class="text-danger"></span>
+
+                                    </div>
+                                </div>
+
+
+
+
+                                <div class="form-group col-sm-6">
+                                    <div class="form-group">
+                                        <label asp-for="Campany_Date" class="control-label">تاريخ التعامل</label>
+                                        <input asp-for="Campany_Date" id="dateof" class="form-control" />
+                                        <span asp-validation-for="Campany_Date" class="text-danger"></span>
+
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <div class="form-group">
+                                        <label asp-for="Campany_Description" class="control-label">ملاحظات</label>
+                                        <input asp-for="Campany_Description" class="form-control" />
+                                        <span asp-validation-for="Campany_Description" class="text-danger"></span>
+
+                                    </div>
+                                </div>
+
+
+
+                                <div class="form-group">
+                                    <input type="submit" value="تعديل" class="btn btn-primary" style="font-size:large;" />
+                                    <a href="#" value="إدارة الشركات" class="btn btn-success" style="font-size:large;">إدارة الشركات</a>
+
+                                </div>
+
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    window.onload = function WindowLoad(event) {
+        document.getElementById("dateof").valueAsDate = new Date();
+    }
+</script>
+
+
+
+
+</div>
+
+
+
+
+
+@section Scripts {
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}
+
+
+
+@{
+    ViewData["Title"] = "Edit";
+}

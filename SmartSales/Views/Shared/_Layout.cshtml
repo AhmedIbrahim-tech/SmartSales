@@ -1,0 +1,354 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title> Smart Sales</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="~/css/rtl/bootstrap.min.css" rel="stylesheet">
+
+    <!-- not use this in ltr -->
+    <link href="~/css/rtl/bootstrap.rtl.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="~/css/plugins/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="~/css/rtl/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="~/css/font-awesome/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="~/lib/bootstrap-icons/font/bootstrap-icons.min.css" rel="stylesheet" type="text/css">
+
+    <link href="~/css/site.css" rel="stylesheet" />
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0;">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index">Smart Sales</a>
+            </div>
+            <!-- /.navbar-header -->
+
+            <ul class="nav navbar-top-links navbar-left" style="text-align:end;">
+
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li>
+                            <a asp-action="DoLogout" asp-controller="Users"><i class="fa fa-sign-out fa-fw"></i> تسجيل خروج</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+            <!-- /.navbar-top-links -->
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+
+                        <li>
+                            <a asp-controller="Home" asp-action="Index"><i class="fa fa-home fa-fw"></i> الصفحة الرئيسية</a>
+                        </li>
+
+                        <!-- الأصناف و المخازن -->
+
+                        <li>
+                            <a href="#"><i class="fa fa-database fa-fw"></i> الأصناف و المخازن<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a asp-controller="Categories" asp-action="Index">إدارة الأصناف</a>
+                                </li>
+                                <li>
+                                    <a asp-controller="Categories" asp-action="Create">إضافة صنف</a>
+                                </li>
+                                <li>
+                                    <a asp-controller="Stocks" asp-action="Index">إدارة المخازن</a>
+                                </li>
+                                <li>
+                                    <a asp-controller="Stocks" asp-action="Create">إضافة مخزن</a>
+                                </li>
+                                
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+
+                        <!-- المنتجات -->
+
+                        <li>
+                            <a href="#"><i class="fa fa-list fa-fw"></i> المنتجات<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a asp-controller="Products" asp-action="Index">إدارة المنتجات</a>
+                                </li>
+                                <li>
+                                    <a asp-controller="Products" asp-action="Create">إضافة منتج</a>
+                                </li>
+
+                                <li>
+                                    <a asp-controller="Products" asp-action="AddQuantity">إضافة كمية</a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+                        <!-- الشركات -->
+
+                        <li>
+                            <a href="#"><i class="fa fa-institution fa-fw"></i> الشركات<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a asp-controller="Suppliers" asp-action="Create">إضافة مورد</a>
+                                </li>
+                                <li>
+                                    <a asp-controller="Suppliers" asp-action="Index">إدارة الموردين</a>
+                                </li>
+                                <li>
+                                    <a asp-controller="Campanies" asp-action="Index" >إدارة الشركات</a>
+                                </li>
+                                <li>
+                                    <a asp-controller="Campanies" asp-action="Create">إضافة شركة</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <!-- العملاء -->
+                        <li>
+                            <a href="#"><i class="fa fa-users fa-fw"></i> العملاء<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a asp-controller="Clients" asp-action="Index">إدارة العملاء</a>
+                                </li>
+                                <li>
+                                    <a asp-controller="Clients" asp-action="Create">إضافة عميل</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+
+                        <!-- البيع و الشراء -->
+                        <li>
+                            <a href="#"><i class="fa fa-credit-card fa-fw"></i> البيع و الشراء<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="AddSellOrder.html">إضافة بيع / مرتجع بيع</a>
+                                </li>
+
+                                <li>
+                                    <a href="AllSellOrders.html">إدارة البيع / المرتجع</a>
+                                </li>
+                                <li>
+                                    <a href="AddPurchaseOrder.html">إضافة شراء / مرتجع شراء</a>
+                                </li>
+
+                                <li>
+                                    <a href="AllPurchaseOrders.html">إدارة الشراء / المرتجع</a>
+                                </li>
+                                <li>
+                                    <a href="AddClientPayment.html">إستيفاء دفعة</a>
+                                </li>
+                                <li>
+                                    <a href="AllClientPayments.html">إدارة إستيفاء الدفعات</a>
+                                </li>
+
+                                <li>
+                                    <a href="AddPayment.html">تسديد دفعة</a>
+                                </li>
+                                <li>
+                                    <a href="AllPayments.html">إدارة سداد الدفعات</a>
+                                </li>
+
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+
+                        <!-- الحسابات -->
+                        <li>
+                            <a href="#"><i class="fa fa-folder-open-o fa-fw"></i> الحسابات<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+
+                                <li>
+                                    <a href="AllContributors.html">حسابات المستثمرين</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+
+                        <!-- الأقساط -->
+                        <!-- الماليات -->
+                        <li>
+                            <a href="#"><i class="fa fa-money fa-fw"></i> الماليات<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="AddExpense.html">إضافة رصيد</a>
+                                </li>
+                                <li>
+                                    <a href="AllExpense.html">إدارة الأرصدة</a>
+                                </li>
+                                <li>
+                                    <a href="AddMoney.html">إضافة مصروف</a>
+                                </li>
+                                <li>
+                                    <a href="AllMoney.html">إدارة المصروفات</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+
+
+                        <!-- العمليات البنكية -->
+                        <li>
+                            <a href="#"><i class="fa fa-bank fa-fw"></i> العمليات البنكية<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="AddBankAccount.html">إضافة حساب بنكى</a>
+                                </li>
+                                <li>
+                                    <a href="AllBankAccounts.html">إدارة الحسابات البنكية</a>
+                                </li>
+                                <li>
+                                    <a href="AddBankOperation.html">إضافة عملية بنكية</a>
+                                </li>
+                                <li>
+                                    <a href="AllBankOperations.html">إدارة العمليات البنكية</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+
+                        <!-- الموظفين -->
+                        <li>
+                            <a href="#"><i class="fa fa-group fa-fw"></i> الموظفين<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="AddEmployee.html">إضافة موظف</a>
+                                </li>
+                                <li>
+                                    <a href="AllEmployees.html">إدارة الموظفين</a>
+                                </li>
+                                <li>
+                                    <a href="AddSalary.html">إضافة راتب موظف</a>
+                                </li>
+                                <li>
+                                    <a href="AllSalaries.html">إدارة رواتب الموظفين</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+
+                        <!-- المستثمرين -->
+                        <li>
+                            <a href="#"><i class="fa fa-compress fa-fw"></i> المستثمرين<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="AddContributor.html">إضافة مستثمر</a>
+                                </li>
+                                <li>
+                                    <a href="AllContributors.html">إدارة المستثمرين</a>
+                                </li>
+                                <li>
+                                    <a href="AddContibutorProfit.html">إضافة ربح مستثمر</a>
+                                </li>
+                                <li>
+                                    <a href="AllContributorsProfits.html">إدارة أرباح المستثمرين</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+
+                        <li>
+                            <a href="index.html"><i class="fa fa-random fa-fw"></i> الحركات اليومية</a>
+                        </li>
+                        <li>
+                            <a href="StockProfit.html"><i class="fa fa-archive fa-fw"></i> الخزنة و الأرباح</a>
+                        </li>
+
+                        <!-- المستخدمين -->
+                        <li>
+                            <a href="#"><i class="fa fa-users fa-fw"></i> المستخدمين<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="AddUser.html">إضافة مستخدم</a>
+                                </li>
+                                <li>
+                                    <a href="AllUsers.html">إدارة المستخدمين</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+
+                        <!-- المستخدمين -->
+                        <li>
+                            <a href="#"><i class="fa fa-wrench fa-fw"></i> الإعدادات<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="AboutCompany.html">بيانات الشركة</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+
+
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+
+        <div id="page-wrapper">
+            @RenderBody()
+        </div>
+
+
+
+
+
+
+
+    </div>
+    <!-- /#wrapper -->
+    <!-- jQuery Version 1.11.0 -->
+    <script src="~/js/jquery-1.11.0.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="~/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="~/js/metisMenu/metisMenu.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="~/js/sb-admin-2.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+
+</html>
